@@ -50,6 +50,16 @@ The latest data is read with Pandas, and the closing price for each stock is plo
 
 ## References 
 
+### README
+https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax 
+
+### Problem 1 
 yfinance: https://ranaroussi.github.io/yfinance/
+
+### Problem 2
+
+### Problem 3
+
+### Problem 4 
 
 
