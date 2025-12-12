@@ -1,14 +1,18 @@
-# automate workflow to pull yfinance data 
-#! /usr/bin/python3 python3
+#!/usr/bin/env python
 
-import datetime 
+# automate workflow to pull yfinance data 
+
+# import packages 
 import yfinance as yf
+import datetime 
 import os
 import pandas as pd
 import matplotlib.pyplot as plt
 
 
+
 # 1. Get data about FAANG stocks and save it 
+
 tickers = yf.Tickers('META AAPL AMZN NFLX GOOG')
 
 df_with_intervals = tickers.download(period='5d', interval='60m')
@@ -47,7 +51,7 @@ df_latest_tickers['Close_datetime'] = df_latest_tickers.index.astype(str).str.fi
 eod_tickers = df_latest_tickers[df_latest_tickers['Close_datetime'] != ' ']
 eod_tickers.loc[:,('Date')] = eod_tickers['Date'].replace(to_replace=' .+$', value='', regex=True)
 
-# plot Close prices 
+# plot hourly "Close" prices in the past 5 days
 
 # axes 
 close_price = df_latest_tickers['Close']
@@ -58,7 +62,7 @@ fig, ax = plt.subplots(figsize=(16,16))
 ax.plot(date, close_price)
 ax.set_xlabel('Date and Time')
 ax.set_ylabel('Close Price (USD)')
-ax.legend(labels = ["AAPL", "AMZN", "GOOG", "META", "NFLX"], fontsize = 'x-small')
+ax.legend(labels = ["AAPL", "AMZN", "GOOG", "META", "NFLX"], fontsize = 'x-large', loc = 'center right')
 ax.set_xticks(date, labels = date, rotation = 90) 
 ax.set_title('FAANG Stocks - Close price over last 5 days')
 
@@ -66,10 +70,9 @@ ax.set_title('FAANG Stocks - Close price over last 5 days')
 image_name = latest_tickers_data.strip('.csv') + '.png'
 plt.savefig("images/"+ image_name, dpi=100)
 
-# plot EOD Close prices in subplots 
+# plot EOD "Close" prices in subplots 
 
-# axes and labels 
-# Create arrays for variables
+# create arrays for axes and labels 
 eod_date = eod_tickers['Date'] 
 
 aapl = eod_tickers[('Close','AAPL')]
@@ -82,7 +85,7 @@ data = [aapl, amzn, goog, meta, nflx]
 titles = ['AAPL', 'AMZN', 'GOOG', 'META', 'NFLX']
 
 
-# plot 
+# plot the data 
 fig, axs = plt.subplots(2, 3, figsize=(14, 8))
 axs = axs.flatten()
 
@@ -94,7 +97,7 @@ for i, (ax, series, title) in enumerate(zip(axs, data, titles)):
 axs[-1].set_visible(False)
 fig.tight_layout(pad=3.0)
 
-# save
+# save the plots 
 image_name = latest_tickers_data.strip('.csv') + '_subplots.png'
 plt.savefig("images/"+ image_name)
 
