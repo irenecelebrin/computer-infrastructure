@@ -1,0 +1,44 @@
+name: FAANG stocks weekly download
+
+on:
+  schedule:
+    # This runs every Saturday at 08:30 UTC
+    # Note: GitHub Actions use UTC time. Adjust if you need 8:30 in a specific timezone.
+    - cron: '30 8 * * 6'
+  workflow_dispatch: # Allows you to run the script manually for testing
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Clone the repo
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          # Required for committing back to the repo
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      # 2. Setup Python (Optional but recommended)
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      # Install dependencies if you have a requirements.txt
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      # 3. Run the script
+      - name: Run faang.py
+        run: python faang.py
+
+      # 4. Commit and Push changes
+      - name: Commit and Push
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add .
+          # The "|| exit 0" prevents the workflow from failing if there are no changes to commit
+          git commit -m "FAANG stocks weekly download" || exit 0
+          git push
