@@ -7,6 +7,9 @@ on:
     - cron: '30 8 * * 6'
   workflow_dispatch: # Allows you to run the script manually for testing
 
+permissions:
+  contents: write   # required to push changes
+
 jobs:
   build:
     runs-on: ubuntu-latest
