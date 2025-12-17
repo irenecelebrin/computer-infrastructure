@@ -1,47 +1,49 @@
-name: FAANG stocks weekly download
+name: Run faang.py weekly
 
 on:
   schedule:
-    # This runs every Saturday at 08:30 UTC
-    # Note: GitHub Actions use UTC time. Adjust if you need 8:30 in a specific timezone.
+    # Runs every Saturday at 08:30 UTC
     - cron: '30 8 * * 6'
-  workflow_dispatch: # Allows you to run the script manually for testing
-
-permissions:
-  contents: write   # required to push changes
+  workflow_dispatch:
 
 jobs:
-  build:
+  run-script:
     runs-on: ubuntu-latest
+
+    # ✅ Allow the workflow to push commits
+    permissions:
+      contents: write
 
     steps:
       # 1. Clone the repo
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          # Required for committing back to the repo
-          token: ${{ secrets.GITHUB_TOKEN }}
+          persist-credentials: true
 
-      # 2. Setup Python (Optional but recommended)
+      # 2. Set up Python
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
-          python-version: '3.x'
+          python-version: '3.11'
 
-      # Install dependencies if you have a requirements.txt
+      # 3. Install dependencies
       - name: Install dependencies
-        run: pip install -r requirements.txt
-
-      # 3. Run the script
-      - name: Run faang.py
-        run: python faang.py
-
-      # 4. Commit and Push changes
-      - name: Commit and Push
         run: |
-          git config --local user.email "github-actions[bot]@users.noreply.github.com"
-          git config --local user.name "github-actions[bot]"
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      # 4. Run the script
+      - name: Run faang.py
+        run: |
+          python faang.py
+
+      # 5. Commit and push changes
+      - name: Commit and push changes
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
           git add .
-          # The "|| exit 0" prevents the workflow from failing if there are no changes to commit
-          git commit -m "FAANG stocks weekly download" || exit 0
+          git commit -m "Automated update from faang.py" || echo "No changes to commit"
           git push
