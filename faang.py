@@ -68,7 +68,7 @@ ax.set_title('FAANG Stocks - Close price over last 5 days')
 
 # save
 image_name = latest_tickers_data.strip('.csv') + '.png'
-plt.savefig("images/plots/"+ image_name, dpi=100)
+plt.savefig("images/"+ image_name, dpi=100)
 
 # plot EOD "Close" prices in subplots 
 
@@ -99,6 +99,6 @@ fig.tight_layout(pad=3.0)
 
 # save the plots 
 image_name = latest_tickers_data.strip('.csv') + '_subplots.png'
-plt.savefig("images/plots/"+ image_name)
+plt.savefig("images"+ image_name)
 
 
