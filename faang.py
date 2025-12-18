@@ -67,6 +67,10 @@ ax.set_xticks(date, labels = date, rotation = 90)
 ax.set_title('FAANG Stocks - Close price over last 5 days')
 
 # save
+
+if not os.path.exists('images/plots'):
+    os.makedirs('images/plots') 
+
 plots_folder = 'images/plots/'
 image_name = latest_tickers_data.strip('.csv') + '.png'
 plt.savefig(plots_folder + image_name, dpi=100)
