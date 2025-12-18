@@ -6,8 +6,8 @@ on:
   schedule:
     # Runs every Saturday at 08:30 UTC
     #- cron: '30 8 * * 6'
-    # For testing only: run the code every hour (1 minute past the hour)
-    - cron: '* */1 * * *'
+    # For testing only: At minute 30 past every hour. See: https://crontab.guru/#30_*/1_*_*_*
+    - cron: '30 */1 * * *'
   workflow_dispatch:
 
 permissions:
