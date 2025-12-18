@@ -1,18 +1,19 @@
 name: Run faang.py weekly
 
+# adapted from chatGPT: https://chatgpt.com/share/69440724-6820-800f-ab3e-ae20cb193cae 
+
 on:
   schedule:
     # Runs every Saturday at 08:30 UTC
     - cron: '30 8 * * 6'
   workflow_dispatch:
 
+permissions:
+  contents: write  # required to commit and push changes
+
 jobs:
   run-script:
     runs-on: ubuntu-latest
-
-    # ✅ Allow the workflow to push commits
-    permissions:
-      contents: write
 
     steps:
       # 1. Clone the repo
@@ -29,6 +30,7 @@ jobs:
 
       # 3. Install dependencies
       - name: Install dependencies
+        run: |
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
