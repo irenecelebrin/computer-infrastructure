@@ -1,4 +1,4 @@
-name: Run faang.py weekly
+name: Get data from Yahoo Finance 
 
 # adapted from chatGPT: https://chatgpt.com/share/69440724-6820-800f-ab3e-ae20cb193cae 
 
@@ -46,5 +46,5 @@ jobs:
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
 
           git add .
-          git commit -m "Automated update from faang.py" || echo "No changes to commit"
+          git commit -m "Latest FAANG data and plots" || echo "No changes to commit"
           git push
