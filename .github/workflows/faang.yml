@@ -5,7 +5,8 @@ name: Get data from Yahoo Finance
 on:
   schedule:
     # Runs every Saturday at 08:30 UTC
-    - cron: '45 08 * * *' #'30 8 * * 6'
+    - cron: '00 09 * * *' #'30 8 * * 6'
+    - cron: '02 15 * * *'
   workflow_dispatch:
 
 permissions:
