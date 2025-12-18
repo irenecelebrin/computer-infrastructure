@@ -20,13 +20,14 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          persist-credentials: true
+          token: ${{ secrets.GITHUB_TOKEN }}  # default token with write permissions
+          fetch-depth: 0                      # ensure full history for committing
 
       # 2. Set up Python
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
+          python-version: '3.x'
 
       # 3. Install dependencies
       - name: Install dependencies
