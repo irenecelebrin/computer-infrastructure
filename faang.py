@@ -17,8 +17,8 @@ tickers = yf.Tickers('META AAPL AMZN NFLX GOOG')
 
 df_with_intervals = tickers.download(period='5d', interval='60m')
 
-# Verify if a data folder exists, and if not, create one. 
-# See: https://stackoverflow.com/questions/273192/how-do-i-create-a-directory-and-any-missing-parent-directories 
+# verify if a data folder exists, and if not, create one. 
+# see: https://stackoverflow.com/questions/273192/how-do-i-create-a-directory-and-any-missing-parent-directories 
 if not os.path.exists('data'):
     os.makedirs('data')
 
@@ -67,7 +67,7 @@ ax.set_xticks(date, labels = date, rotation = 90)
 ax.set_title('FAANG Stocks - Close price over last 5 days')
 
 # save
-
+# verify if the folder exists, if not, create it: 
 if not os.path.exists('images/plots'):
     os.makedirs('images/plots') 
 
