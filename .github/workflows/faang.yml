@@ -4,8 +4,8 @@ name: Get data from Yahoo Finance
 
 on:
   schedule:
-    - cron: '30 8 * * 5' # '30 8 * * 6' # Runs every Saturday at 08:30 UTC
-    #- cron: '30 */1 * * *' # For testing only: At minute 30 past every hour. See: https://crontab.guru/#30_*/1_*_*_*
+    - cron: '30 8 * * 5' # '30 8 * * 6' # Runs every Saturday at 08:30 UTC. see: https://crontab.guru/#30_8_*_*_6
+    #- cron: '30 */1 * * *' # For testing only: At minute 30 past every hour. see: https://crontab.guru/#30_*/1_*_*_*
   workflow_dispatch:
 
 permissions:
