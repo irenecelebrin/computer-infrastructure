@@ -20,23 +20,20 @@ The code in this repository automatically downloads and plots financial data fro
 
 ### Inside this repository 
 
-├── data\
-├── images\
-│   ├── other\
-│   ├── plots\
-├── roughwork [TO REMOVE]\
-├── .gitignore\
-│── faang.py\
-├── problems.ipynb\
-├── README.md\
-├── requirements.txt\
+This is the structure of the repositoy: 
 
-[REMOVE]
-The main code is included in [faang.py](faang.py), the data is saved in the folder [data](data), and the plots in the folder [images/plots](images/plots). A detailed exaplantion of how the project was set up and developed is included in [problems.ipynb](problems.ipynb).
+<img src="images/other/0_readme.png" alt="repo" width="200"/>
+
+**Relevant folders and files**: 
+
+1. [faang.py](faang.py) is the main script
+2. [data](data) and [images/plots](images/plots) are where the weekly data and plots are saved
+3. [.gihub/worfklows](.github) includes the automation GitHub Action 
+4. [problems.ipynb](problems.ipynb) is where each componend of the code is detailed and explained. 
 
 ## Problems 
 
-This sections includes a breakdown of the components in this repository. Every component is explained in detail in [problems.ipynb](problems.ipynb). Please refer to this file for information on the code and specific references.
+This sections includes a breakdown of the components in this repository. Every component is explained in detail in [problems.ipynb](problems.ipynb). 
 
 ### 1. Data from yfinance
 
@@ -60,6 +57,7 @@ The focus of this part of the project is making the file executable. This means 
 
 ### 4. Automation
 
+GitHub actions is used to automate the code execution. This means that a workflow named [.faang.yml](.github/workflows/faang.yml) is created, so that the code is run every Saturday morning at 8:30AM (UTC), the data is saved and plotted, and the output pushed to the repository. 
 
 
 ## References 
@@ -96,6 +94,8 @@ pandas findall: https://pandas.pydata.org/docs/reference/api/pandas.Series.str.f
 
 pandas df.head(): https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.head.html  
 
+pandas dataframe.plot(): https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.plot.html
+
 matplotlib legend: https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.legend.html 
 
 matplotlib xticks: https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.xticks.html 
@@ -110,4 +110,24 @@ file permissions: https://share.google/aimode/3Ibdw9179iM9uMZt0
 
 ### Problem 4 
 
+GitHub Actions: https://docs.github.com/en/actions/get-started/quickstart 
 
+GitHub Actions first workflow: https://docs.github.com/en/actions/get-started/quickstart#creating-your-first-workflow 
+
+GitHub workflow dispatch: https://docs.github.com/en/actions/how-tos/manage-workflow-runs/manually-run-a-workflow 
+
+Cron jobs: https://cronitor.io/guides/cron-jobs
+
+Crontab gutu: https://crontab.guru/ 
+
+Github action by chatGPT: https://chatgpt.com/share/69440724-6820-800f-ab3e-ae20cb193cae 
+
+Troubleshooting File Error: https://chatgpt.com/s/t_6944126f7db88191a2622cc79aad5bab
+
+Troubleshooting Cron job delay: https://chatgpt.com/s/t_69441b434d3881919d0535f3a13249e2 
+
+Cron job timezone: https://serverfault.com/questions/791713/what-time-zone-is-a-cron-job-using
+
+### Other
+
+Markdown tricks: https://stackoverflow.com/questions/50544499/github-flavored-markdown-how-to-make-a-styled-admonition-box-in-a-gist 
