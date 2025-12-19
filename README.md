@@ -102,6 +102,8 @@ matplotlib xticks: https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.x
 
 matplotlib subplots: https://chatgpt.com/share/6910e526-a2d0-800f-be66-94ac6a06bf9c  
 
+matplotlib color mapping: https://chatgpt.com/s/t_6945a7de52d481918048246e9c76ee3d 
+
 ### Problem 3
 
 python shebang: https://realpython.com/python-shebang/
