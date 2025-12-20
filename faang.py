@@ -86,7 +86,7 @@ ax.legend(labels = tickers, fontsize = 'x-large', loc = "center right")
 # set x ticks. See: https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.xticks.html 
 ax.set_xticks(date, labels = date, rotation = 90) 
 # set title
-ax.set_title('FAANG stock: hourly Close price (last 5d)', fontsize=22, fontweight="bold" )
+ax.set_title('FAANG tickers: hourly Close price (last 5d)', fontsize=22, fontweight="bold" )
 
 # save the plot
 # verify if the folder exists, if not, create it: 
@@ -132,7 +132,7 @@ for ax, series, ticker in zip(axs, data, tickers):
 axs[-1].set_visible(False)
 
 # add title. see: https://chatgpt.com/s/t_6945a44b5b8c819186585a8c21d20677
-fig.suptitle("FAANG stock: EOD Close price (last 5d)", fontsize=18, fontweight="bold")
+fig.suptitle("FAANG tickers: EOD Close price (last 5d)", fontsize=18, fontweight="bold")
 
 # adjust spacing between plots
 fig.tight_layout(pad=3.0)
