@@ -28,7 +28,7 @@ This is the structure of the repository:
 
 1. [faang.py](faang.py) is the main script
 2. [data](data) and [images/plots](images/plots) are where the weekly data and plots are saved
-3. [.gihub/worfklows](.github) includes the automation GitHub Action 
+3. [.gihub/worfklows](.github) includes the automation through GitHub Actions 
 4. [problems.ipynb](problems.ipynb) is where each component of the code is detailed and explained. 
 
 ## Problems 
