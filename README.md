@@ -1,6 +1,6 @@
 # Computer Infrastructure
 
-Course project for the course **Computer Infrastructure** - Higher Diploma in Science in Computing in Data Analytics, ATU Galway Mayo (IE). 
+Project for the course **Computer Infrastructure** - Higher Diploma in Science in Computing in Data Analytics, ATU Galway Mayo (IE). 
 
 ## About this repository
 
