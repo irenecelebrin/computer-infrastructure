@@ -10,8 +10,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 
-
-# 1. Get data about FAANG stock and save it 
+# 1. Get data about FAANG tickers and save it 
 
 tickers = yf.Tickers('META AAPL AMZN NFLX GOOG')
 
@@ -65,7 +64,7 @@ color_map = {
     "NFLX": "tab:purple",
 }
 
-# Plot hourly Close price in the past 5 days 
+# 2.1 Plot hourly Close price in the past 5 days 
 
 # X axis
 date = df_latest_tickers['Date']
@@ -76,16 +75,17 @@ close_price = df_latest_tickers['Close']
 # plot the data
 fig, ax = plt.subplots(figsize=(16, 16))
 
+# plot each ticker with a different color
 for ticker in tickers:
     ax.plot(date, close_price[ticker], color = color_map[ticker])
         
 ax.set_xlabel('Date and Time', fontsize=18)
 ax.set_ylabel('Close Price (USD)', fontsize=18)
-# https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.legend.html
+# create legend. see: https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.legend.html
 ax.legend(labels = tickers, fontsize = 'x-large', loc = "center right")
-# https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.xticks.html 
+# set x ticks. See: https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.xticks.html 
 ax.set_xticks(date, labels = date, rotation = 90) 
-# title
+# set title
 ax.set_title('FAANG stock: hourly Close price (last 5d)', fontsize=22, fontweight="bold" )
 
 # save the plot
@@ -100,7 +100,7 @@ image_name = latest_tickers_data.strip('.csv') + '.png'
 plt.savefig(plots_folder + image_name, dpi=100)
 
 
-# plot EOD "Close" prices in subplots 
+# 2.2 Plot EOD Close price in subplots 
 
 # X axis 
 eod_date = eod_tickers['Date'] 
@@ -118,22 +118,23 @@ data = [aapl, amzn, goog, meta, nflx]
 # plot the data 
 fig, axs = plt.subplots(2, 3, figsize=(14, 8))
 
-# Flatten the 2D array of axes for easy iteration
+# flatten the 2D array of axes for easy iteration
 axs = axs.flatten()
 
+# create a subplot for each ticker
 for ax, series, ticker in zip(axs, data, tickers):
     ax.plot(eod_date, series, color=color_map.get(ticker, "black"))
     ax.set_title(ticker)
     ax.set_ylabel("Close price (USD)")
     ax.tick_params(axis='x', rotation=90)
 
-# Hide the last unused subplot (the 6th one)
+# hide the last unused subplot (the 6th one)
 axs[-1].set_visible(False)
 
 # add title. see: https://chatgpt.com/s/t_6945a44b5b8c819186585a8c21d20677
 fig.suptitle("FAANG stock: EOD Close price (last 5d)", fontsize=18, fontweight="bold")
 
-# Adjust spacing between plots
+# adjust spacing between plots
 fig.tight_layout(pad=3.0)
 
 # save 
