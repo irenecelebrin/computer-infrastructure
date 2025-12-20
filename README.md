@@ -33,7 +33,7 @@ This is the structure of the repository:
 
 ## Problems 
 
-This sections includes a breakdown of the components in this repository. Every component is explained in detail in [problems.ipynb](problems.ipynb). 
+This section includes a breakdown of the components in this repository. Every component is explained in detail in [problems.ipynb](problems.ipynb). 
 
 ### 1. Data from yfinance
 
